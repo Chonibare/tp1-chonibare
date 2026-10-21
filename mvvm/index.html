@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo-list MVVM</title>
+</head>
+<body>
+  <h1>Todo-list (MVVM)</h1>
+  <div id="app">
+    <form>
+      <input placeholder="Nouvelle tâche">
+      <button type="submit">Ajouter</button>
+    </form>
+    <p class="error"></p>
+    <div class="filters">
+      <button type="button" data-filter="toutes">Toutes</button>
+      <button type="button" data-filter="faites">Faites</button>
+      <button type="button" data-filter="a-faire">À faire</button>
+    </div>
+    <ul></ul>
+    <p class="counter"></p>
+  </div>
+  <script type="module">
+    import { TodoModel } from './TodoModel.js';
+    import { TodoView } from './TodoView.js';
+    import { TodoViewModel } from './TodoViewModel.js';
+
+    const model = new TodoModel();
+    const view = new TodoView(document.getElementById('app'));
+    new TodoViewModel(model, view);
+  </script>
+</body>
+</html>
